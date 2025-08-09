@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maven Dependency Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Maven Dependency Visualizer</h1>
+            <p>Paste your Maven dependency tree output below to visualize dependencies interactively</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-container">
+                <label for="maven-input">Maven Dependency Tree Output:</label>
+                <textarea 
+                    id="maven-input" 
+                    placeholder="Paste your 'mvn dependency:tree' output here..."
+                    rows="10"
+                ></textarea>
+            </div>
+            <div class="controls">
+                <button id="parse-btn" class="primary-btn">Parse Dependencies</button>
+                <button id="clear-btn" class="secondary-btn">Clear</button>
+                <button id="expand-all-btn" class="secondary-btn">Expand All</button>
+                <button id="collapse-all-btn" class="secondary-btn">Collapse All</button>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <label for="search-input">Search Dependencies:</label>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search for dependencies..."
+                    disabled
+                >
+                <button id="clear-search-btn" class="clear-btn">×</button>
+            </div>
+            <div id="search-results" class="search-results"></div>
+        </div>
+
+        <div class="visualization-section">
+            <div id="dependency-tree" class="dependency-tree"></div>
+            <div id="stats" class="stats"></div>
+        </div>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
